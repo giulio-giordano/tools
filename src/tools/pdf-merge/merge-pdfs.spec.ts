@@ -30,4 +30,13 @@ describe('mergePdfFiles', () => {
       code: 'minimum-files',
     })
   })
+
+  it('rejects non-PDF files', async () => {
+    const invalidFile = new File(['not a PDF'], 'notes.txt', { type: 'text/plain' })
+    const validFile = await createPdf(100)
+
+    await expect(mergePdfFiles([invalidFile, validFile])).rejects.toMatchObject({
+      code: 'invalid-pdf',
+    })
+  })
 })
