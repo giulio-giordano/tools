@@ -17,6 +17,9 @@ async function openPdfTool(page: Page) {
   await page.goto('/')
   await page.getByRole('link', { name: 'Unisci PDF' }).first().click()
   await expect(page.getByRole('heading', { name: 'Unisci file PDF' })).toBeVisible()
+  await expect(
+    page.getByText('La privacy è garantita: i file vengono elaborati interamente nel browser e non vengono caricati su server.'),
+  ).toBeVisible()
 }
 
 test('requires two PDFs and lets the user remove and keyboard-reorder files', async ({ page }) => {

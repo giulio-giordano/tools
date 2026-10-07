@@ -38,7 +38,7 @@ function dropOn(index: number, event: DragEvent) {
 </script>
 
 <template>
-  <ol class="divide-y divide-neutral-200 border-y border-neutral-200" :aria-label="preferences.t('selectedFiles')">
+  <ol class="divide-y divide-neutral-200 overflow-hidden rounded-xl border border-neutral-200" :aria-label="preferences.t('selectedFiles')">
     <li
       v-for="(file, index) in files"
       :key="`${file.name}-${file.lastModified}-${index}`"
@@ -57,7 +57,7 @@ function dropOn(index: number, event: DragEvent) {
       <div class="flex shrink-0 items-center gap-1">
         <button
           type="button"
-          class="grid size-9 place-items-center text-neutral-600 hover:bg-neutral-100 hover:text-black focus-visible:outline-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-30"
+          class="grid size-9 place-items-center rounded-lg text-neutral-600 hover:bg-neutral-100 hover:text-black focus-visible:outline-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-30"
           :aria-label="preferences.t('moveUp', { name: file.name })"
           :disabled="disabled || index === 0"
           @click="emit('move', index, index - 1)"
@@ -66,7 +66,7 @@ function dropOn(index: number, event: DragEvent) {
         </button>
         <button
           type="button"
-          class="grid size-9 place-items-center text-neutral-600 hover:bg-neutral-100 hover:text-black focus-visible:outline-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-30"
+          class="grid size-9 place-items-center rounded-lg text-neutral-600 hover:bg-neutral-100 hover:text-black focus-visible:outline-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-30"
           :aria-label="preferences.t('moveDown', { name: file.name })"
           :disabled="disabled || index === files.length - 1"
           @click="emit('move', index, index + 1)"
@@ -75,7 +75,7 @@ function dropOn(index: number, event: DragEvent) {
         </button>
         <button
           type="button"
-          class="grid size-9 place-items-center text-neutral-600 hover:bg-neutral-100 hover:text-black focus-visible:outline-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-30"
+          class="grid size-9 place-items-center rounded-lg text-neutral-600 hover:bg-neutral-100 hover:text-black focus-visible:outline-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-30"
           :aria-label="preferences.t('removeFile', { name: file.name })"
           :disabled="disabled"
           @click="emit('remove', index)"

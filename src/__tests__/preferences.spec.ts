@@ -16,7 +16,7 @@ describe('language preference', () => {
     const preferences = usePreferencesStore()
 
     expect(preferences.locale).toBe('it')
-    expect(preferences.t('homeEyebrow')).toBe('Strumenti digitali')
+    expect(preferences.t('availableTools')).toBe('Strumenti disponibili')
     expect(document.documentElement.lang).toBe('it')
   })
 
@@ -24,7 +24,7 @@ describe('language preference', () => {
     const preferences = usePreferencesStore()
     preferences.setLocale('en')
 
-    expect(preferences.t('homeEyebrow')).toBe('Digital tools')
+    expect(preferences.t('availableTools')).toBe('Available tools')
     expect(localStorage.getItem(localeStorageKey)).toBe('en')
     expect(document.documentElement.lang).toBe('en')
     expect(document.title).toContain('tools')

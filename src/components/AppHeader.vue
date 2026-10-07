@@ -14,7 +14,7 @@ function changeLocale(event: Event) {
   <header class="border-b border-black/10 bg-white">
     <div class="mx-auto flex min-h-18 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
       <RouterLink class="inline-flex shrink-0 items-center gap-3 text-black no-underline" :to="{ name: 'home' }">
-        <span class="grid size-9 place-items-center bg-black text-sm font-bold text-white">T</span>
+        <span class="grid size-9 place-items-center rounded-lg bg-black text-sm font-bold text-white">T</span>
         <span class="text-sm font-semibold tracking-tight">{{ preferences.t('brand') }}</span>
       </RouterLink>
 
@@ -38,7 +38,7 @@ function changeLocale(event: Event) {
         <label class="sr-only" for="language-select">{{ preferences.t('languageLabel') }}</label>
         <select
           id="language-select"
-          class="max-w-24 border-0 bg-transparent py-2 pl-1 pr-5 text-sm text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          class="max-w-24 rounded-lg border-0 bg-transparent py-2 pl-2 pr-5 text-sm text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           :value="preferences.locale"
           @change="changeLocale"
         >

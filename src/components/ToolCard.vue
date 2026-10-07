@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <RouterLink
     :to="to"
-    class="group flex min-h-52 flex-col justify-between border border-neutral-200 bg-white p-6 text-black no-underline transition hover:border-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+    class="group flex min-h-52 flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 text-black no-underline transition hover:border-neutral-400 hover:bg-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
   >
     <div class="flex items-start justify-between gap-4">
       <span class="font-mono text-xs text-neutral-500">{{ index }}</span>

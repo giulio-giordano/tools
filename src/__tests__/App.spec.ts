@@ -13,13 +13,14 @@ describe('app shell', () => {
     router.replace('/')
   })
 
-  it('shows the toolbox navigation and the PDF merge tool', async () => {
+  it('shows the available tools heading and the PDF merge tool', async () => {
     await router.push('/')
     await router.isReady()
 
     const wrapper = mount(App, { global: { plugins: [createPinia(), router] } })
 
     expect(wrapper.text()).toContain('tools')
+    expect(wrapper.find('h1').text()).toBe('Strumenti disponibili')
     expect(wrapper.text()).toContain('Unisci PDF')
     expect(wrapper.find('a[href="#/pdf-merge"]').exists()).toBe(true)
 

@@ -128,7 +128,7 @@ async function mergeAndDownload() {
       </p>
     </div>
 
-    <div class="mt-10 max-w-3xl border border-neutral-200 bg-white p-5 sm:p-8">
+    <div class="mt-10 max-w-3xl rounded-2xl border border-neutral-200 bg-white p-5 sm:p-8">
       <input
         ref="fileInput"
         class="hidden"
@@ -140,7 +140,7 @@ async function mergeAndDownload() {
         @change="onFileSelection"
       />
       <div
-        class="border border-dashed px-5 py-9 text-center transition sm:py-12"
+        class="rounded-xl border border-dashed px-5 py-9 text-center transition sm:py-12"
         :class="isDragging ? 'border-black bg-neutral-50' : 'border-neutral-300'"
         @dragenter="onDragOver"
         @dragover="onDragOver"
@@ -154,7 +154,7 @@ async function mergeAndDownload() {
         <p class="mt-1 text-sm text-neutral-500">{{ preferences.t('dropzoneHint') }}</p>
         <button
           type="button"
-          class="mt-5 border border-black px-4 py-2 text-sm font-medium text-black transition hover:bg-black hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+          class="mt-5 rounded-lg border border-black px-4 py-2 text-sm font-medium text-black transition hover:bg-black hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
           :disabled="isMerging"
           @click="fileInput?.click()"
         >
@@ -193,7 +193,7 @@ async function mergeAndDownload() {
         <input
           id="output-name"
           v-model="outputName"
-          class="mt-2 w-full border border-neutral-300 px-3 py-2 text-sm outline-none transition focus:border-black focus:ring-1 focus:ring-black sm:max-w-sm"
+          class="mt-2 w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm outline-none transition focus:border-black focus:ring-1 focus:ring-black sm:max-w-sm"
           type="text"
           maxlength="120"
           :disabled="isMerging"
@@ -203,7 +203,7 @@ async function mergeAndDownload() {
       <div class="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <button
           type="button"
-          class="min-h-11 bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:bg-neutral-300"
+          class="min-h-11 rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:bg-neutral-300"
           :disabled="files.length < 2 || isMerging"
           @click="mergeAndDownload"
         >
