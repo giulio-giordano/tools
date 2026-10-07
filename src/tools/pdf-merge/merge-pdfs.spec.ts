@@ -39,4 +39,14 @@ describe('mergePdfFiles', () => {
       code: 'invalid-pdf',
     })
   })
+
+  it('reports the name of a corrupt PDF', async () => {
+    const corruptFile = new File(['not a PDF'], 'corrupted.pdf', { type: 'application/pdf' })
+    const validFile = await createPdf(100)
+
+    await expect(mergePdfFiles([corruptFile, validFile])).rejects.toMatchObject({
+      code: 'unreadable-pdf',
+      fileName: 'corrupted.pdf',
+    })
+  })
 })

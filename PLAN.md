@@ -21,7 +21,7 @@ Trasformare lo starter Vue in un'app solo frontend con strumenti utili, interfac
 - `src/views/HomeView.vue`, `src/components/AppHeader.vue`, `src/components/ToolCard.vue` — shell, home e componenti condivisi.
 - `src/tools/pdf-merge/PdfMergeView.vue`, `src/tools/pdf-merge/PdfFileList.vue`, `src/tools/pdf-merge/merge-pdfs.ts` — UI e logica del tool in una cartella dedicata, senza accoppiarla agli altri tool.
 - `src/stores/counter.ts` — rimuovere lo store starter non più usato.
-- `src/__tests__/App.spec.ts`, `src/tools/pdf-merge/merge-pdfs.spec.ts`, `e2e/vue.spec.ts` — sostituire gli assert starter e coprire flussi reali.
+- `src/__tests__/App.spec.ts`, `src/tools/pdf-merge/merge-pdfs.spec.ts`, `e2e/vue.spec.ts`, `e2e/pdf-merge.spec.ts` — sostituire gli assert starter e coprire flussi reali.
 
 ## Riutilizzo e stato attuale
 - App Vue 3 + TypeScript, Vite, Vue Router, Pinia, Vitest e Playwright già presenti; `src/main.ts` installa Pinia e router.
@@ -35,7 +35,7 @@ Trasformare lo starter Vue in un'app solo frontend con strumenti utili, interfac
 - [x] Creare CSS globale, shell e navigazione home/tool; configurare rotte hash compatibili con GitHub Pages.
 - [x] Implementare dizionario IT/EN, selettore lingua persistente e attributo `lang` aggiornato.
 - [x] Implementare il merge client-side: drag-and-drop/file picker, elenco ordinabile (drag e controlli accessibili su/giù), rimozione, validazione di almeno due PDF, messaggi localizzati e download.
-- [ ] Sostituire test starter con test unitari di locale/merge e test E2E del cambio lingua e flusso PDF.
+- [x] Sostituire test starter con test unitari di locale/merge e test E2E del cambio lingua e flusso PDF.
 - [ ] Eseguire build, type-check e suite unit/E2E; verificare anteprima production al percorso `/tools/`.
 
 ## Verifica
