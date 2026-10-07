@@ -42,7 +42,7 @@ function dropOn(index: number, event: DragEvent) {
     <li
       v-for="(file, index) in files"
       :key="`${file.name}-${file.lastModified}-${index}`"
-      class="flex items-center gap-3 py-3"
+      class="flex items-center gap-3 px-4 py-3"
       :draggable="!disabled"
       @dragstart="startDrag(index, $event)"
       @dragover.prevent
@@ -50,6 +50,12 @@ function dropOn(index: number, event: DragEvent) {
       @dragend="draggedIndex = null"
     >
       <span aria-hidden="true" class="cursor-grab text-neutral-400">⠿</span>
+      <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-rose-50 text-[10px] font-bold tracking-wide text-rose-700">
+        <svg aria-hidden="true" class="size-5" fill="none" viewBox="0 0 24 24">
+          <path d="M6 3.75h8l4.25 4.5v12H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+          <path d="M14 4v5h4M9 15h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+        </svg>
+      </span>
       <span class="min-w-0 flex-1">
         <span class="block truncate text-sm font-medium text-neutral-900">{{ file.name }}</span>
         <span class="mt-1 block text-xs text-neutral-500">{{ formatFileSize(file.size) }}</span>
@@ -62,7 +68,9 @@ function dropOn(index: number, event: DragEvent) {
           :disabled="disabled || index === 0"
           @click="emit('move', index, index - 1)"
         >
-          <span aria-hidden="true">↑</span>
+          <svg aria-hidden="true" class="size-4" fill="none" viewBox="0 0 24 24">
+            <path d="m7 14 5-5 5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+          </svg>
         </button>
         <button
           type="button"
@@ -71,7 +79,9 @@ function dropOn(index: number, event: DragEvent) {
           :disabled="disabled || index === files.length - 1"
           @click="emit('move', index, index + 1)"
         >
-          <span aria-hidden="true">↓</span>
+          <svg aria-hidden="true" class="size-4" fill="none" viewBox="0 0 24 24">
+            <path d="m7 10 5 5 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+          </svg>
         </button>
         <button
           type="button"
@@ -80,7 +90,9 @@ function dropOn(index: number, event: DragEvent) {
           :disabled="disabled"
           @click="emit('remove', index)"
         >
-          <span aria-hidden="true">×</span>
+          <svg aria-hidden="true" class="size-4" fill="none" viewBox="0 0 24 24">
+            <path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+          </svg>
         </button>
       </div>
     </li>

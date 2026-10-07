@@ -5,9 +5,11 @@ test('shows the tools home and the PDF merge entry', async ({ page }) => {
 
   await expect(page).toHaveTitle('tools — strumenti digitali')
   await expect(page.getByRole('banner').getByText('tools')).toBeVisible()
+  await expect(page.getByRole('banner').getByRole('link')).toHaveCount(1)
+  await expect(page.getByRole('banner').getByRole('combobox', { name: 'Lingua' })).toBeVisible()
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Strumenti disponibili')
   await expect(page.getByText('I tuoi file restano sul tuo dispositivo.', { exact: true })).toHaveCount(0)
-  await expect(page.getByRole('link', { name: 'Unisci PDF' }).first()).toBeVisible()
+  await expect(page.getByRole('complementary').getByRole('link', { name: 'Unisci PDF' })).toBeVisible()
 })
 
 test('switches language and restores the saved choice', async ({ page }) => {

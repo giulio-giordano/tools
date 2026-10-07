@@ -104,31 +104,26 @@ async function mergeAndDownload() {
 </script>
 
 <template>
-  <section class="py-12 sm:py-20">
-    <RouterLink
-      class="inline-flex items-center gap-2 text-sm text-neutral-500 transition hover:text-black"
-      :to="{ name: 'home' }"
-    >
-      <span aria-hidden="true">←</span>
-      {{ preferences.t('backToTools') }}
-    </RouterLink>
-
-    <div class="mt-10 max-w-3xl">
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">
-        {{ preferences.t('toolIndex') }}
-      </p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-[-0.05em] text-black sm:text-5xl">
-        {{ preferences.t('pdfMergeHeading') }}
-      </h1>
-      <p class="mt-5 max-w-2xl text-base leading-7 text-neutral-600">
-        {{ preferences.t('pdfMergeIntroduction') }}
-      </p>
-      <p id="privacy-copy" class="mt-3 text-sm leading-6 text-neutral-500">
-        {{ preferences.t('privacyMessage') }}
+  <section class="py-7 sm:py-9 xl:py-10">
+    <div class="mb-6 flex flex-col gap-4 2xl:flex-row 2xl:items-end 2xl:justify-between">
+      <div>
+        <h1 class="text-3xl font-semibold tracking-[-0.04em] text-neutral-950 sm:text-4xl">
+          {{ preferences.t('pdfMergeHeading') }}
+        </h1>
+        <p class="mt-2 max-w-3xl text-base leading-7 text-neutral-600">
+          {{ preferences.t('pdfMergeIntroduction') }}
+        </p>
+      </div>
+      <p id="privacy-copy" class="flex max-w-2xl items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-950 2xl:max-w-xl">
+        <svg aria-hidden="true" class="mt-0.5 size-5 shrink-0" fill="none" viewBox="0 0 24 24">
+          <path d="M12 3 20 6v5c0 5-3.3 8.4-8 10-4.7-1.6-8-5-8-10V6l8-3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+          <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+        </svg>
+        <span>{{ preferences.t('privacyMessage') }}</span>
       </p>
     </div>
 
-    <div class="mt-10 max-w-3xl rounded-2xl border border-neutral-200 bg-white p-5 sm:p-8">
+    <div class="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
       <input
         ref="fileInput"
         class="hidden"
@@ -139,83 +134,100 @@ async function mergeAndDownload() {
         aria-hidden="true"
         @change="onFileSelection"
       />
-      <div
-        class="rounded-xl border border-dashed px-5 py-9 text-center transition sm:py-12"
-        :class="isDragging ? 'border-black bg-neutral-50' : 'border-neutral-300'"
-        @dragenter="onDragOver"
-        @dragover="onDragOver"
-        @dragleave="isDragging = false"
-        @drop.prevent="onDrop"
-      >
-        <svg aria-hidden="true" class="mx-auto size-8 text-neutral-500" fill="none" viewBox="0 0 24 24">
-          <path d="M12 16V4m0 0L8 8m4-4 4 4M5 14v5h14v-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-        </svg>
-        <p class="mt-4 text-sm font-semibold text-neutral-900">{{ preferences.t('dropzoneTitle') }}</p>
-        <p class="mt-1 text-sm text-neutral-500">{{ preferences.t('dropzoneHint') }}</p>
-        <button
-          type="button"
-          class="mt-5 rounded-lg border border-black px-4 py-2 text-sm font-medium text-black transition hover:bg-black hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
-          :disabled="isMerging"
-          @click="fileInput?.click()"
-        >
-          {{ preferences.t('chooseFiles') }}
-        </button>
+      <div class="grid xl:grid-cols-[minmax(17rem,0.78fr)_minmax(0,1.5fr)]">
+        <div class="border-b border-neutral-200 p-5 sm:p-7 xl:border-b-0 xl:border-r">
+          <div
+            class="flex min-h-60 flex-col items-center justify-center rounded-2xl border border-dashed px-5 py-8 text-center transition"
+            :class="isDragging ? 'border-neutral-950 bg-neutral-100' : 'border-neutral-300 bg-neutral-50/70'"
+            @dragenter="onDragOver"
+            @dragover="onDragOver"
+            @dragleave="isDragging = false"
+            @drop.prevent="onDrop"
+          >
+            <span class="grid size-12 place-items-center rounded-2xl bg-white text-neutral-700 shadow-sm">
+              <svg aria-hidden="true" class="size-6" fill="none" viewBox="0 0 24 24">
+                <path d="M12 16V4m0 0L8 8m4-4 4 4M5 14v5h14v-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              </svg>
+            </span>
+            <p class="mt-3 text-sm font-semibold text-neutral-900">{{ preferences.t('dropzoneTitle') }}</p>
+            <p class="mt-1 text-sm text-neutral-500">{{ preferences.t('dropzoneHint') }}</p>
+            <button
+              type="button"
+              class="mt-4 inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white px-4 py-2.5 text-sm font-medium text-neutral-800 shadow-sm transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+              :disabled="isMerging"
+              @click="fileInput?.click()"
+            >
+              <svg aria-hidden="true" class="size-4" fill="none" viewBox="0 0 24 24">
+                <path d="M4 7.5h6l2 2H20v9H4z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+                <path d="M12 12v4m0-4-2 2m2-2 2 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              </svg>
+              {{ preferences.t('chooseFiles') }}
+            </button>
+          </div>
+        </div>
+
+        <div class="min-w-0 p-5 sm:p-7">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-base font-semibold tracking-tight text-neutral-950">{{ preferences.t('selectedFiles') }}</h2>
+            <span class="rounded-full bg-neutral-100 px-3 py-1 font-mono text-xs text-neutral-600" aria-live="polite">
+              {{ preferences.t('fileCount', { count: files.length }) }}
+            </span>
+          </div>
+
+          <p v-if="files.length === 0" class="mt-4 flex min-h-44 items-center justify-center rounded-2xl bg-neutral-50 px-5 text-center text-sm text-neutral-500">
+            {{ preferences.t('noFilesSelected') }}
+          </p>
+          <PdfFileList
+            v-else
+            class="mt-4"
+            :files="files"
+            :disabled="isMerging"
+            @move="moveFile"
+            @remove="removeFile"
+          />
+          <p class="mt-3 text-xs leading-5 text-neutral-500">{{ preferences.t('reorderHint') }}</p>
+        </div>
       </div>
 
-      <div class="mt-8 flex items-center justify-between gap-4">
-        <h2 class="text-sm font-semibold">{{ preferences.t('selectedFiles') }}</h2>
-        <span class="font-mono text-xs text-neutral-500" aria-live="polite">
-          {{ preferences.t('fileCount', { count: files.length }) }}
-        </span>
-      </div>
-
-      <p v-if="files.length === 0" class="py-6 text-sm text-neutral-500">
-        {{ preferences.t('noFilesSelected') }}
-      </p>
-      <PdfFileList
-        v-else
-        class="mt-3"
-        :files="files"
-        :disabled="isMerging"
-        @move="moveFile"
-        @remove="removeFile"
-      />
-
-      <p class="mt-3 text-xs leading-5 text-neutral-500">{{ preferences.t('reorderHint') }}</p>
-      <p v-if="files.length < 2" class="mt-2 text-sm text-neutral-600">
-        {{ preferences.t('minimumFiles') }}
-      </p>
-
-      <div class="mt-8 border-t border-neutral-200 pt-6">
-        <label for="output-name" class="block text-sm font-medium text-neutral-800">
-          {{ preferences.t('outputName') }}
-        </label>
-        <input
-          id="output-name"
-          v-model="outputName"
-          class="mt-2 w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm outline-none transition focus:border-black focus:ring-1 focus:ring-black sm:max-w-sm"
-          type="text"
-          maxlength="120"
-          :disabled="isMerging"
-        />
-      </div>
-
-      <div class="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <button
-          type="button"
-          class="min-h-11 rounded-lg bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:bg-neutral-300"
-          :disabled="files.length < 2 || isMerging"
-          @click="mergeAndDownload"
-        >
-          {{ isMerging ? preferences.t('merging') : preferences.t('mergePdfs') }}
-        </button>
-        <p v-if="isMerging" role="status" aria-live="polite" class="text-sm text-neutral-600">
+      <div class="border-t border-neutral-200 bg-neutral-50/70 p-5 sm:p-7">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div class="w-full lg:max-w-xl">
+            <label for="output-name" class="block text-sm font-semibold text-neutral-900">
+              {{ preferences.t('outputName') }}
+            </label>
+            <input
+              id="output-name"
+              v-model="outputName"
+              class="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-3.5 py-3 text-sm outline-none transition placeholder:text-neutral-400 focus:border-neutral-500 focus:ring-2 focus:ring-neutral-200"
+              type="text"
+              maxlength="120"
+              :disabled="isMerging"
+            />
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <p v-if="files.length < 2" class="max-w-xs text-sm leading-6 text-neutral-500">
+              {{ preferences.t('minimumFiles') }}
+            </p>
+            <button
+              type="button"
+              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-neutral-950 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:bg-neutral-300 sm:min-w-52"
+              :disabled="files.length < 2 || isMerging"
+              @click="mergeAndDownload"
+            >
+              <svg aria-hidden="true" class="size-4" fill="none" viewBox="0 0 24 24">
+                <path d="M7 7h10m0 0-3-3m3 3-3 3M17 17H7m0 0 3 3m-3-3 3-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              </svg>
+              {{ isMerging ? preferences.t('merging') : preferences.t('mergePdfs') }}
+            </button>
+          </div>
+        </div>
+        <p v-if="isMerging" role="status" aria-live="polite" class="mt-4 text-sm text-neutral-600">
           {{ preferences.t('merging') }}
         </p>
-        <p v-else-if="isComplete" role="status" aria-live="polite" class="text-sm text-neutral-700">
+        <p v-else-if="isComplete" role="status" aria-live="polite" class="mt-4 text-sm text-emerald-800">
           {{ preferences.t('mergeSuccess') }}
         </p>
-        <p v-else-if="errorMessage" role="alert" class="text-sm text-red-700">
+        <p v-else-if="errorMessage" role="alert" class="mt-4 text-sm text-red-700">
           {{ errorMessage }}
         </p>
       </div>

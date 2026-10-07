@@ -17,6 +17,8 @@ async function openPdfTool(page: Page) {
   await page.goto('/')
   await page.getByRole('link', { name: 'Unisci PDF' }).first().click()
   await expect(page.getByRole('heading', { name: 'Unisci file PDF' })).toBeVisible()
+  await expect(page.getByText(/(?:Strumento|Tool)\s+0?1/)).toHaveCount(0)
+  await expect(page.getByRole('link', { name: 'Tutti gli strumenti' })).toHaveCount(0)
   await expect(
     page.getByText('La privacy è garantita: i file vengono elaborati interamente nel browser e non vengono caricati su server.'),
   ).toBeVisible()

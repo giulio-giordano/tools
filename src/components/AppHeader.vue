@@ -11,34 +11,20 @@ function changeLocale(event: Event) {
 </script>
 
 <template>
-  <header class="border-b border-black/10 bg-white">
-    <div class="mx-auto flex min-h-18 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-      <RouterLink class="inline-flex shrink-0 items-center gap-3 text-black no-underline" :to="{ name: 'home' }">
-        <span class="grid size-9 place-items-center rounded-lg bg-black text-sm font-bold text-white">T</span>
-        <span class="text-sm font-semibold tracking-tight">{{ preferences.t('brand') }}</span>
+  <header class="sticky top-0 z-20 border-b border-neutral-200 bg-white/90 backdrop-blur">
+    <div class="flex min-h-18 items-center justify-between gap-4 px-5 sm:px-8 xl:px-12">
+      <RouterLink class="text-lg font-semibold tracking-tight text-black no-underline" :to="{ name: 'home' }">
+        {{ preferences.t('brand') }}
       </RouterLink>
-
-      <div class="flex items-center gap-4 sm:gap-6">
-        <nav :aria-label="preferences.t('navHome')" class="flex items-center gap-4 text-sm sm:gap-5">
-          <RouterLink
-            class="text-neutral-500 transition hover:text-black"
-            active-class="!text-black"
-            :to="{ name: 'home' }"
-          >
-            {{ preferences.t('navHome') }}
-          </RouterLink>
-          <RouterLink
-            class="text-neutral-500 transition hover:text-black"
-            active-class="!text-black"
-            :to="{ name: 'pdf-merge' }"
-          >
-            {{ preferences.t('navPdfMerge') }}
-          </RouterLink>
-        </nav>
-        <label class="sr-only" for="language-select">{{ preferences.t('languageLabel') }}</label>
+      <label class="sr-only" for="language-select">{{ preferences.t('languageLabel') }}</label>
+      <div class="flex items-center gap-2 rounded-xl border border-neutral-200 bg-neutral-50 px-3">
+        <svg aria-hidden="true" class="size-4 text-neutral-500" fill="none" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+          <path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z" stroke="currentColor" stroke-width="1.5" />
+        </svg>
         <select
           id="language-select"
-          class="max-w-24 rounded-lg border-0 bg-transparent py-2 pl-2 pr-5 text-sm text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          class="max-w-24 rounded-lg border-0 bg-transparent py-2 pr-2 text-sm text-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           :value="preferences.locale"
           @change="changeLocale"
         >

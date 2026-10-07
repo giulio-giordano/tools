@@ -6,13 +6,15 @@ const preferences = usePreferencesStore()
 </script>
 
 <template>
-  <section class="py-10 sm:py-14">
-    <h1 class="border-b border-neutral-200 pb-4 text-2xl font-semibold tracking-tight text-black sm:text-3xl">
-      {{ preferences.t('availableTools') }}
-    </h1>
-    <div class="mt-6 grid max-w-lg grid-cols-1 gap-4">
+  <section class="py-8 sm:py-10 xl:py-12">
+    <div class="mb-7 flex items-center justify-between gap-4">
+      <h1 class="text-2xl font-semibold tracking-tight text-neutral-950 sm:text-3xl">
+        {{ preferences.t('availableTools') }}
+      </h1>
+      <span aria-hidden="true" class="hidden h-px flex-1 bg-neutral-200 sm:block"></span>
+    </div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 2xl:grid-cols-3">
       <ToolCard
-        index="01"
         :title="preferences.t('pdfMergeTitle')"
         :description="preferences.t('pdfMergeDescription')"
         to="/pdf-merge"
