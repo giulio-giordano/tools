@@ -36,12 +36,12 @@ Trasformare lo starter Vue in un'app solo frontend con strumenti utili, interfac
 - [x] Implementare dizionario IT/EN, selettore lingua persistente e attributo `lang` aggiornato.
 - [x] Implementare il merge client-side: drag-and-drop/file picker, elenco ordinabile (drag e controlli accessibili su/giù), rimozione, validazione di almeno due PDF, messaggi localizzati e download.
 - [x] Sostituire test starter con test unitari di locale/merge e test E2E del cambio lingua e flusso PDF.
-- [ ] Eseguire build, type-check e suite unit/E2E; verificare anteprima production al percorso `/tools/`.
+- [x] Eseguire build, type-check e suite unit/E2E; verificare anteprima production al percorso `/tools/`.
 
 ## Verifica
 - Build e type-check, compatibili con il workflow esistente `.github/workflows/deploy.yml` (`bun install --frozen-lockfile`, `bun run build`, deploy di `dist` su push a `main`).
 - Test unitari per preferenza lingua e merge PDF (ordine delle pagine, rifiuto di meno di due file, input corrotto/protetto, output valido e nome personalizzato/default).
-- Test E2E per cambio lingua, selezione/riordino/rimozione, validazione minima e download.
+- Test E2E per cambio lingua, selezione/riordino/rimozione, validazione minima e download; eseguiti con successo su Chromium.
 - Verifica manuale responsive, accessibilità da tastiera, assenza di upload di rete e asset/rotte funzionanti sotto `/tools/` su GitHub Pages.
 
 ## Decisioni confermate
