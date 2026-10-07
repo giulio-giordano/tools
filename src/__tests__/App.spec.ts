@@ -1,9 +1,14 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { createPinia } from 'pinia'
 import App from '../App.vue'
 import router from '../router'
 
 describe('app shell', () => {
+  beforeEach(() => {
+    localStorage.setItem('toolbox.locale', 'it')
+  })
+
   afterEach(() => {
     router.replace('/')
   })
@@ -12,9 +17,9 @@ describe('app shell', () => {
     await router.push('/')
     await router.isReady()
 
-    const wrapper = mount(App, { global: { plugins: [router] } })
+    const wrapper = mount(App, { global: { plugins: [createPinia(), router] } })
 
-    expect(wrapper.text()).toContain('Toolbox')
+    expect(wrapper.text()).toContain('tools')
     expect(wrapper.text()).toContain('Unisci PDF')
     expect(wrapper.find('a[href="#/pdf-merge"]').exists()).toBe(true)
 

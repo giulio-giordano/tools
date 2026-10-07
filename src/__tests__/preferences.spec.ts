@@ -27,7 +27,7 @@ describe('language preference', () => {
     expect(preferences.t('homeEyebrow')).toBe('Digital tools')
     expect(localStorage.getItem(localeStorageKey)).toBe('en')
     expect(document.documentElement.lang).toBe('en')
-    expect(document.title).toContain('Toolbox')
+    expect(document.title).toContain('tools')
 
     setActivePinia(createPinia())
     expect(usePreferencesStore().locale).toBe('en')
