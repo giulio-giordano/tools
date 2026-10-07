@@ -23,4 +23,11 @@ describe('mergePdfFiles', () => {
     expect(mergedDocument.getPage(0).getWidth()).toBe(100)
     expect(mergedDocument.getPage(1).getWidth()).toBe(300)
   })
+
+  it('requires at least two PDF files', async () => {
+    await expect(mergePdfFiles([])).rejects.toMatchObject({ code: 'minimum-files' })
+    await expect(mergePdfFiles([await createPdf(100)])).rejects.toMatchObject({
+      code: 'minimum-files',
+    })
+  })
 })
