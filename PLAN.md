@@ -34,7 +34,7 @@ Trasformare lo starter Vue in un'app solo frontend con strumenti utili, interfac
 - [x] Aggiungere Tailwind CSS v4 con `@tailwindcss/vite` e `pdf-lib` con Bun, aggiornando lockfile.
 - [x] Creare CSS globale, shell e navigazione home/tool; configurare rotte hash compatibili con GitHub Pages.
 - [x] Implementare dizionario IT/EN, selettore lingua persistente e attributo `lang` aggiornato.
-- [ ] Implementare il merge client-side: drag-and-drop/file picker, elenco ordinabile (drag e controlli accessibili su/giù), rimozione, validazione di almeno due PDF, messaggi localizzati e download.
+- [x] Implementare il merge client-side: drag-and-drop/file picker, elenco ordinabile (drag e controlli accessibili su/giù), rimozione, validazione di almeno due PDF, messaggi localizzati e download.
 - [ ] Sostituire test starter con test unitari di locale/merge e test E2E del cambio lingua e flusso PDF.
 - [ ] Eseguire build, type-check e suite unit/E2E; verificare anteprima production al percorso `/tools/`.
 
