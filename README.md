@@ -1,67 +1,45 @@
-# .
+# Tools
 
-This template should help get you started developing with Vue 3 in Vite.
+A collection of browser-based PDF and DOCX utilities. Document files are processed locally in the browser; their contents are not uploaded to a conversion service.
 
-## Recommended IDE Setup
+## Development
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Requires Bun and a supported Node.js version (see `package.json`).
 
 ```sh
 bun install
+bun run dev
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-bun dev
-```
-
-### Type-Check, Compile and Minify for Production
+Build and verify:
 
 ```sh
 bun run build
+bun run test:unit
+bun run test:e2e
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+The production build is deployed to GitHub Pages by `.github/workflows/deploy.yml`. Vite copies files from `public/` into `dist/`, so the third-party license files there are included in the Pages artifact.
 
-```sh
-bun test:unit
-```
+## Licensing and third-party notices
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+The original source code in this repository is licensed under the MIT License. See [`LICENSE`](LICENSE).
 
-```sh
-# Install browsers for the first run
-npx playwright install
+The application also uses third-party software. These components retain their own licenses and are not relicensed by this project's MIT License:
 
-# When testing on CI, must build the project first
-bun run build
+| Component | License | Copyright notice |
+| --- | --- | --- |
+| ReamKit | MIT | Copyright (c) 2026 Alex Krassavin |
+| pdf-lib | MIT | Copyright (c) 2019 Andrew Dillon |
+| fflate | MIT | Copyright (c) 2026 Arjun Barrett |
+| Pinia | MIT | Copyright (c) 2019-present Eduardo San Martin Morote |
+| Vue | MIT | Copyright (c) 2018-present, Yuxi (Evan) You |
+| Vue Router | MIT | Copyright (c) 2019-present Eduardo San Martin Morote |
 
-# Runs the end-to-end tests
-bun test:e2e
-# Runs the tests only on Chromium
-bun test:e2e --project=chromium
-# Runs the tests of a specific file
-bun test:e2e tests/example.spec.ts
-# Runs the tests in debug mode
-bun test:e2e --debug
-```
+The application bundles the **Carlito** fonts. They are licensed separately under the **SIL Open Font License, Version 1.1** and are not covered by this project's MIT License.
+
+> Copyright 2013 The Carlito Project Authors (https://github.com/googlefonts/carlito), with Reserved Font Name "Carlito"
+
+The full Carlito license text is available at [`public/licenses/Carlito-OFL.txt`](public/licenses/Carlito-OFL.txt). It is copied into the GitHub Pages build at `licenses/Carlito-OFL.txt` (under the site's `/tools/` base path).
+
+Other transitive dependencies retain the licenses declared by their respective authors and package metadata. The resolved dependency versions are recorded in [`bun.lock`](bun.lock).
