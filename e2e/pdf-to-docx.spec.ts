@@ -39,7 +39,7 @@ test('converts text, scanned, and mixed PDFs locally and downloads successful DO
   await expect(page.getByRole('heading', { name: 'Converti PDF in DOCX' })).toBeVisible()
   await expect(
     page.getByText(
-      'I PDF restano sul tuo dispositivo: la conversione avviene interamente nel browser e i file non vengono inviati all’esterno.',
+      'I tuoi file restano sul tuo dispositivo: l’elaborazione avviene nel browser e i documenti non vengono caricati sui nostri server.',
     ),
   ).toBeVisible()
 

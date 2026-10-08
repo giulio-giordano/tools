@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue'
 import DocxFileList from './DocxFileList.vue'
+import PrivacyNotice from '../../components/PrivacyNotice.vue'
 import { convertDocxBatch, createPdfArchive } from './convert-batch'
 import { createDocxQueueItems, partitionDocxFiles, type DocxItemError, type DocxItemStatus, type DocxQueueItem } from './docx-files'
 import { usePreferencesStore } from '../../stores/preferences'
@@ -108,9 +109,7 @@ onBeforeUnmount(clearResult)
       </p>
     </div>
 
-    <p class="mb-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-950">
-      {{ preferences.t('docxPrivacyMessage') }}
-    </p>
+    <PrivacyNotice />
     <p class="mb-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950">
       {{ preferences.t('docxFidelityNotice') }}
     </p>

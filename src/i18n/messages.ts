@@ -2,6 +2,20 @@ export const messages = {
   it: {
     documentTitle: 'tools — strumenti digitali',
     brand: 'tools',
+    privacyNotice:
+      'I tuoi file restano sul tuo dispositivo: l’elaborazione avviene nel browser e i documenti non vengono caricati sui nostri server.',
+    privacyLink: 'Privacy',
+    privacyPageTitle: 'Privacy',
+    privacyPageIntro: 'Informazioni sul trattamento locale dei file e sulla preferenza della lingua.',
+    privacyFilesHeading: 'File e documenti',
+    privacyFilesText:
+      'I file selezionati vengono elaborati localmente nel browser e non sono caricati su un servizio di conversione.',
+    privacyLanguageHeading: 'Preferenza della lingua',
+    privacyLanguageText:
+      'Per ricordare la lingua scelta, il sito salva “it” o “en” nel localStorage del browser, con la chiave toolbox.locale. Il valore resta nel browser finché non cancelli i dati del sito. Questa preferenza non è usata per tracciamento o pubblicità.',
+    privacyHostingHeading: 'Hosting',
+    privacyHostingText: 'Il sito è ospitato su GitHub Pages. Per informazioni sulle pratiche privacy di GitHub, consulta la',
+    privacyGithubLink: 'Privacy Statement di GitHub',
     navHome: 'Strumenti',
     languageLabel: 'Lingua',
     italian: 'Italiano',
@@ -17,8 +31,6 @@ export const messages = {
       'Converti PDF nel browser e scarica i documenti Word in un archivio ZIP. Le scansioni restano immagini: niente OCR.',
     pdfMergeHeading: 'Unisci file PDF',
     pdfMergeIntroduction: 'Combina i tuoi documenti in un unico file.',
-    privacyMessage:
-      'La privacy è garantita: i file vengono elaborati interamente nel browser e non vengono caricati su server.',
     dropzoneTitle: 'Trascina qui i tuoi file PDF',
     dropzoneHint: 'oppure selezionali dal dispositivo',
     chooseFiles: 'Seleziona PDF',
@@ -42,8 +54,6 @@ export const messages = {
     docxPdfHeading: 'Converti DOCX in PDF',
     docxPdfIntroduction:
       'Converti documenti Word nel browser e scarica i PDF in un unico archivio ZIP.',
-    docxPrivacyMessage:
-      'I documenti restano sul tuo dispositivo: la conversione avviene nel browser e i file non vengono caricati.',
     docxFidelityNotice:
       'La formattazione può differire da Microsoft Word. I font di sostituzione sono inclusi nell’app e non vengono scaricati da servizi esterni.',
     docxDropzoneTitle: 'Trascina qui i tuoi file DOCX',
@@ -70,8 +80,6 @@ export const messages = {
     pdfToDocxHeading: 'Converti PDF in DOCX',
     pdfToDocxIntroduction:
       'Converti i tuoi file PDF in documenti Word modificabili e scaricali in un unico archivio ZIP.',
-    pdfToDocxPrivacyMessage:
-      'I PDF restano sul tuo dispositivo: la conversione avviene interamente nel browser e i file non vengono inviati all’esterno.',
     pdfToDocxFidelityNotice:
       'Il layout può variare rispetto al PDF. Le scansioni vengono mantenute come immagini; non viene eseguito OCR e il testo nelle immagini non sarà selezionabile.',
     pdfToDocxDropzoneTitle: 'Trascina qui i tuoi file PDF',
@@ -99,6 +107,20 @@ export const messages = {
   en: {
     documentTitle: 'tools — useful tools',
     brand: 'tools',
+    privacyNotice:
+      'Your files stay on your device: processing runs in your browser, and documents are not uploaded to our servers.',
+    privacyLink: 'Privacy',
+    privacyPageTitle: 'Privacy',
+    privacyPageIntro: 'Information about local file processing and your language preference.',
+    privacyFilesHeading: 'Files and documents',
+    privacyFilesText:
+      'Files you select are processed locally in your browser and are not uploaded to a conversion service.',
+    privacyLanguageHeading: 'Language preference',
+    privacyLanguageText:
+      'To remember your selected language, the site stores “it” or “en” in your browser’s localStorage under the key toolbox.locale. The value stays in your browser until you clear this site’s data. This preference is not used for tracking or advertising.',
+    privacyHostingHeading: 'Hosting',
+    privacyHostingText: 'This site is hosted on GitHub Pages. For information about GitHub’s privacy practices, see the',
+    privacyGithubLink: 'GitHub Privacy Statement',
     navHome: 'Tools',
     languageLabel: 'Language',
     italian: 'Italiano',
@@ -114,8 +136,6 @@ export const messages = {
       'Convert PDFs in your browser and download the Word documents in one ZIP archive. Scans remain images; no OCR.',
     pdfMergeHeading: 'Merge PDF files',
     pdfMergeIntroduction: 'Combine your documents into one file.',
-    privacyMessage:
-      'Your privacy is protected: files are processed entirely in your browser and are not uploaded to a server.',
     dropzoneTitle: 'Drop your PDF files here',
     dropzoneHint: 'or choose them from your device',
     chooseFiles: 'Choose PDFs',
@@ -138,8 +158,6 @@ export const messages = {
     docxPdfHeading: 'Convert DOCX to PDF',
     docxPdfIntroduction:
       'Convert Word documents in your browser and download the PDFs in one ZIP archive.',
-    docxPrivacyMessage:
-      'Your documents stay on your device: conversion runs in your browser and files are not uploaded.',
     docxFidelityNotice:
       'Formatting may differ from Microsoft Word. Substitute fonts are bundled with the app and are not downloaded from external services.',
     docxDropzoneTitle: 'Drop your DOCX files here',
@@ -165,8 +183,6 @@ export const messages = {
     pdfToDocxHeading: 'Convert PDF to DOCX',
     pdfToDocxIntroduction:
       'Convert your PDF files into editable Word documents and download them in one ZIP archive.',
-    pdfToDocxPrivacyMessage:
-      'Your PDFs stay on your device: conversion runs entirely in your browser and files are not sent elsewhere.',
     pdfToDocxFidelityNotice:
       'The layout may differ from the PDF. Scans are kept as images; OCR is not performed, and text in images will not be selectable.',
     pdfToDocxDropzoneTitle: 'Drop your PDF files here',

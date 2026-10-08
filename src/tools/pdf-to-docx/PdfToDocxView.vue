@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue'
 import PdfToDocxFileList from './PdfToDocxFileList.vue'
+import PrivacyNotice from '../../components/PrivacyNotice.vue'
 import { convertPdfBatch, createDocxArchive } from './convert-batch'
 import {
   createPdfToDocxQueueItems,
@@ -131,11 +132,7 @@ onBeforeUnmount(clearResult)
       </p>
     </div>
 
-    <p
-      class="mb-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-950"
-    >
-      {{ preferences.t('pdfToDocxPrivacyMessage') }}
-    </p>
+    <PrivacyNotice />
     <p
       class="mb-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950"
     >

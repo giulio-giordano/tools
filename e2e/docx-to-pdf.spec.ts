@@ -17,6 +17,11 @@ test('converts multiple DOCX files locally and downloads only successful PDFs in
   await page.goto('/')
   await page.getByRole('link', { name: 'Converti DOCX in PDF' }).first().click()
   await expect(page.getByRole('heading', { name: 'Converti DOCX in PDF' })).toBeVisible()
+  await expect(
+    page.getByText(
+      'I tuoi file restano sul tuo dispositivo: l’elaborazione avviene nel browser e i documenti non vengono caricati sui nostri server.',
+    ),
+  ).toBeVisible()
 
   await page.locator('input[type="file"]').setInputFiles([
     makeDocxUpload('first.docx', 'Text document with an image and a table'),

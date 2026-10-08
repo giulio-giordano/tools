@@ -24,3 +24,16 @@ test('switches language and restores the saved choice', async ({ page }) => {
   await expect(page.getByRole('combobox', { name: 'Language' })).toHaveValue('en')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Available tools')
 })
+
+test('explains local language storage on the privacy page', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('contentinfo').getByRole('link', { name: 'Privacy' }).click()
+
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Privacy')
+  await expect(page.getByRole('heading', { name: 'Preferenza della lingua' })).toBeVisible()
+  await expect(page.getByText(/toolbox\.locale/)).toBeVisible()
+
+  await page.getByRole('combobox', { name: 'Lingua' }).selectOption('en')
+  await expect(page.getByRole('heading', { name: 'Language preference' })).toBeVisible()
+  await expect(page.getByText(/This site is hosted on GitHub Pages/)).toBeVisible()
+})

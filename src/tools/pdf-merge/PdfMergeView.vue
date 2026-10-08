@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import PdfFileList from './PdfFileList.vue'
+import PrivacyNotice from '../../components/PrivacyNotice.vue'
 import { PdfMergeError, mergePdfFiles, type PdfMergeErrorCode } from './merge-pdfs'
 import { usePreferencesStore } from '../../stores/preferences'
 
@@ -105,23 +106,15 @@ async function mergeAndDownload() {
 
 <template>
   <section class="py-7 sm:py-9 xl:py-10">
-    <div class="mb-6 flex flex-col gap-4 2xl:flex-row 2xl:items-end 2xl:justify-between">
-      <div>
-        <h1 class="text-3xl font-semibold tracking-[-0.04em] text-neutral-950 sm:text-4xl">
-          {{ preferences.t('pdfMergeHeading') }}
-        </h1>
-        <p class="mt-2 max-w-3xl text-base leading-7 text-neutral-600">
-          {{ preferences.t('pdfMergeIntroduction') }}
-        </p>
-      </div>
-      <p id="privacy-copy" class="flex max-w-2xl items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-950 2xl:max-w-xl">
-        <svg aria-hidden="true" class="mt-0.5 size-5 shrink-0" fill="none" viewBox="0 0 24 24">
-          <path d="M12 3 20 6v5c0 5-3.3 8.4-8 10-4.7-1.6-8-5-8-10V6l8-3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
-          <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-        </svg>
-        <span>{{ preferences.t('privacyMessage') }}</span>
+    <div class="mb-4">
+      <h1 class="text-3xl font-semibold tracking-[-0.04em] text-neutral-950 sm:text-4xl">
+        {{ preferences.t('pdfMergeHeading') }}
+      </h1>
+      <p class="mt-2 max-w-3xl text-base leading-7 text-neutral-600">
+        {{ preferences.t('pdfMergeIntroduction') }}
       </p>
     </div>
+    <PrivacyNotice />
 
     <div class="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
       <input

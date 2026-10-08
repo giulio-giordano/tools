@@ -16,8 +16,14 @@ const preferences = usePreferencesStore()
       </main>
     </div>
     <footer class="border-t border-neutral-200 bg-white">
-      <div class="px-5 py-5 text-xs text-neutral-500 sm:px-8 xl:px-12">
+      <div class="flex items-center justify-between gap-4 px-5 py-5 text-xs text-neutral-500 sm:px-8 xl:px-12">
         <span>{{ preferences.t('brand') }}</span>
+        <RouterLink
+          to="/privacy"
+          class="underline underline-offset-2 hover:text-neutral-900"
+        >
+          {{ preferences.t('privacyLink') }}
+        </RouterLink>
       </div>
     </footer>
   </div>

@@ -20,7 +20,7 @@ async function openPdfTool(page: Page) {
   await expect(page.getByText(/(?:Strumento|Tool)\s+0?1/)).toHaveCount(0)
   await expect(page.getByRole('link', { name: 'Tutti gli strumenti' })).toHaveCount(0)
   await expect(
-    page.getByText('La privacy è garantita: i file vengono elaborati interamente nel browser e non vengono caricati su server.'),
+    page.getByText('I tuoi file restano sul tuo dispositivo: l’elaborazione avviene nel browser e i documenti non vengono caricati sui nostri server.'),
   ).toBeVisible()
 }
 

@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('../views/PrivacyView.vue'),
+    },
+    {
       path: '/pdf-merge',
       name: 'pdf-merge',
       component: () => import('../tools/pdf-merge/PdfMergeView.vue'),
