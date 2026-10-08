@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'pdf-merge',
       component: () => import('../tools/pdf-merge/PdfMergeView.vue'),
     },
+    {
+      path: '/docx-to-pdf',
+      name: 'docx-to-pdf',
+      component: () => import('../tools/docx-to-pdf/DocxToPdfView.vue'),
+    },
   ],
 })
 

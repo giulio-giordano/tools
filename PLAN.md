@@ -1,58 +1,42 @@
-# Piano: toolbox web bilingue e unione PDF
+# Piano: conversione DOCX in PDF
 
 ## Contesto
-Trasformare lo starter Vue in un'app solo frontend con strumenti utili, interfaccia in italiano e inglese e selettore lingua. Primo strumento: unire file PDF. Stile minimale in bianco e nero con Tailwind CSS.
+Aggiungere alla toolbox un nuovo strumento per convertire più documenti Word in PDF. Confermato dall'utente: accettare solo `.docx`; conversione nel browser; più file per volta; nome PDF predefinito derivato dal documento e modificabile; consegna di tutti i PDF in un unico ZIP; evitare richieste esterne durante la conversione.
 
 ## Approccio
-- Creare una home/toolbox estendibile e una pagina per il merge PDF; solo il merge sarà operativo nel primo rilascio.
-- Mantenere ogni strumento isolato in una propria cartella sotto `src/tools/<tool-slug>/`; shell, componenti condivisi e localizzazione restano separati dai singoli tool.
-- Usare una preferenza lingua IT/EN centralizzata e persistita in `localStorage`; all'avvio usare italiano se non esiste una scelta salvata e aggiornare anche `document.documentElement.lang`.
-- Usare un dizionario di stringhe tipizzato, senza aggiungere una libreria i18n per questa piccola UI.
-- Elaborare i PDF interamente nel browser con `pdf-lib`; non inviare file a server o servizi esterni. Richiedere almeno due PDF, supportare file picker e drag-and-drop, riordino, rimozione e download.
-- Integrare Tailwind CSS v4 tramite plugin Vite; UI minimale bianco/nero, responsive e accessibile.
-- Usare `createWebHashHistory` per le pagine Vue Router, così i link profondi funzionano su GitHub Pages statico senza fallback server.
+- Aggiungere un tool isolato in `src/tools/docx-to-pdf/`, route dedicata e card nella home.
+- Usare `reamkit` come candidata per la conversione locale: JavaScript/TypeScript puro, output PDF e API dichiarata che non esegue I/O quando i font sono forniti. Passare esplicitamente i font sostitutivi locali, non attivare provider remoti, non inviare mai i DOCX a un server e verificare il traffico di rete in E2E. Font e codice richiesti dal tool devono essere inclusi negli asset statici serviti dall'app; selezionare font open-license adatti ai documenti supportati.
+- Generare un PDF per ogni DOCX, nome output individualmente modificabile e inizializzato con il basename sorgente; impacchettare tutti i PDF riusciti in un solo ZIP. Rendere chiari eventuali errori per singolo file e gestire nomi duplicati nello ZIP aggiungendo suffissi.
+- Riutilizzare i pattern UI del tool di merge PDF per selezione multipla, drag-and-drop, elenco file, stato di elaborazione, messaggi localizzati e download Blob.
+- La resa non può essere garantita pixel-identica a Microsoft Word: testare documenti rappresentativi e segnalare in UI eventuali limiti noti.
 
 ## File da modificare
-- `package.json`, `bun.lock` — aggiungere Tailwind CSS v4, `@tailwindcss/vite` e `pdf-lib`.
-- `vite.config.ts`, `src/main.ts`, nuovo `src/style.css` — plugin Tailwind e CSS globale.
-- `index.html` — titolo e lingua iniziale significativi.
-- `src/App.vue`, `src/router/index.ts` — shell, navigazione e rotte compatibili con GitHub Pages.
-- `src/stores/preferences.ts`, `src/i18n/messages.ts` — lingua persistente e dizionario IT/EN.
-- `src/views/HomeView.vue`, `src/components/AppHeader.vue`, `src/components/ToolCard.vue` — shell, home e componenti condivisi.
-- `src/tools/pdf-merge/PdfMergeView.vue`, `src/tools/pdf-merge/PdfFileList.vue`, `src/tools/pdf-merge/merge-pdfs.ts` — UI e logica del tool in una cartella dedicata, senza accoppiarla agli altri tool.
-- `src/stores/counter.ts` — rimuovere lo store starter non più usato.
-- `src/__tests__/App.spec.ts`, `src/tools/pdf-merge/merge-pdfs.spec.ts`, `e2e/vue.spec.ts`, `e2e/pdf-merge.spec.ts` — sostituire gli assert starter e coprire flussi reali.
+- `src/router/index.ts` — route lazy `/docx-to-pdf`.
+- `src/views/HomeView.vue` — card del nuovo strumento.
+- `src/i18n/messages.ts` — testi IT/EN per selezione, nomi, conversione, ZIP, progresso ed errori.
+- `src/__tests__/App.spec.ts` — verifica card/link.
+- Nuovi file in `src/tools/docx-to-pdf/` — vista, logica converter, gestione batch/nomi e test unitari.
+- `e2e/` — test multi-file, archivio scaricato e assenza di richieste esterne durante la conversione.
+- `package.json`, `bun.lock` — `reamkit`, dipendenza ZIP (es. `fflate` come dipendenza diretta se riusata, o una libreria ZIP dedicata) e font statici con licenza open.
 
-## Riutilizzo e stato attuale
-- App Vue 3 + TypeScript, Vite, Vue Router, Pinia, Vitest e Playwright già presenti; `src/main.ts` installa Pinia e router.
-- `src/router/index.ts` al momento ha `routes: []` e `createWebHistory(import.meta.env.BASE_URL)`; `vite.config.ts` imposta `base: '/tools/'`. Per GitHub Pages si propone hash history.
-- `src/App.vue` e `src/__tests__/App.spec.ts` sono ancora starter; `e2e/vue.spec.ts` si aspetta ancora il titolo `You did it!`.
-- `index.html` ha `lang` vuoto e titolo `Vite App`; non c'è CSS globale importato da `src/main.ts`.
-- Ricerca nel progetto: nessuna implementazione o dipendenza esistente per Tailwind, PDF o i18n. Pinia è già disponibile e si può riusare per la preferenza lingua.
+## Riutilizzo
+- `src/tools/pdf-merge/PdfMergeView.vue` — pattern file picker/dropzone, lista, stato/errori e download Blob con URL temporanei.
+- `src/tools/pdf-merge/PdfFileList.vue` — pattern lista accessibile e rimozione; adattare per nomi PDF editabili.
+- `src/views/HomeView.vue` e `src/components/ToolCard.vue` — card esistente.
+- `src/router/index.ts` — lazy loading e hash history.
+- `src/i18n/messages.ts` — dizionario tipizzato italiano/inglese.
+- `.github/workflows/deploy.yml` — deployment statico GitHub Pages; il tool non deve dipendere da backend o header configurabili sul server.
 
 ## Passi
-- [x] Aggiungere Tailwind CSS v4 con `@tailwindcss/vite` e `pdf-lib` con Bun, aggiornando lockfile.
-- [x] Creare CSS globale, shell e navigazione home/tool; configurare rotte hash compatibili con GitHub Pages.
-- [x] Implementare dizionario IT/EN, selettore lingua persistente e attributo `lang` aggiornato.
-- [x] Implementare il merge client-side: drag-and-drop/file picker, elenco ordinabile (drag e controlli accessibili su/giù), rimozione, validazione di almeno due PDF, messaggi localizzati e download.
-- [x] Sostituire test starter con test unitari di locale/merge e test E2E del cambio lingua e flusso PDF.
-- [x] Eseguire build, type-check e suite unit/E2E; verificare anteprima production al percorso `/tools/`.
+- [x] Integrare il converter con font forniti localmente e provider remoti disabilitati; confermare che non partano richieste di rete durante la conversione.
+- [x] Implementare accettazione/validazione `.docx`, selezione multipla, lista e modifica del nome di ciascun PDF.
+- [x] Convertire i file in modo sequenziale o controllato per contenere la memoria; raccogliere output ed errori per file, creare un singolo ZIP e risolvere collisioni nei nomi.
+- [x] Aggiungere route, card e localizzazione IT/EN.
+- [x] Aggiungere test unitari e E2E; verificare sicurezza locale dei file e contenuto PDF/ZIP.
+- [x] Eseguire build, type-check, test unitari ed E2E; controllare bundle/dimensione degli asset/font inclusi.
 
 ## Verifica
-- Build e type-check, compatibili con il workflow esistente `.github/workflows/deploy.yml` (`bun install --frozen-lockfile`, `bun run build`, deploy di `dist` su push a `main`).
-- Test unitari per preferenza lingua e merge PDF (ordine delle pagine, rifiuto di meno di due file, input corrotto/protetto, output valido e nome personalizzato/default).
-- Test E2E per cambio lingua, selezione/riordino/rimozione, validazione minima e download; eseguiti con successo su Chromium.
-- Verifica manuale responsive, accessibilità da tastiera, assenza di upload di rete e asset/rotte funzionanti sotto `/tools/` su GitHub Pages.
-
-## Decisioni confermate
-- Lingua iniziale: italiano; l'utente può scegliere inglese e la preferenza va salvata nel browser.
-- I PDF sono elaborati esclusivamente nel browser per privacy; nessun upload.
-- Supportare riordino e rimozione dei file e drag-and-drop.
-- Prima versione: toolbox estendibile, con il tool PDF come unico strumento funzionante.
-- Richiedere almeno due PDF prima di abilitare l'unione.
-
-## Decisioni confermate
-- PDF corrotti o protetti/password: mostrare errore localizzato e non generare output; nessun limite artificiale di dimensione iniziale, ma gestire errori di memoria in modo chiaro.
-- Nome del PDF scaricato modificabile dall'utente, con `merged.pdf` come valore predefinito.
-- Nome mostrato agli utenti: `tools`.
-- Durante il merge mostrare uno stato di caricamento/processing e impedire doppi avvii; mantenere tutti i controlli utilizzabili da tastiera oltre al drag-and-drop.
+- DOCX validi con testo, tabelle e immagini; DOCX danneggiato e file non DOCX.
+- Verificare ogni output PDF, nome basename predefinito/modificato, collisioni nel ZIP e comportamento se alcuni file falliscono.
+- E2E: selezione multipla, conversione e singolo download ZIP; controllare che la conversione non contatti domini esterni e che nessun contenuto venga inviato fuori dal browser.
+- Build, type-check e suite test esistenti; prova manuale su GitHub Pages/static preview.

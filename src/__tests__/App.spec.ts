@@ -23,6 +23,9 @@ describe('app shell', () => {
     expect(wrapper.find('h1').text()).toBe('Strumenti disponibili')
     expect(wrapper.text()).toContain('Unisci PDF')
     expect(wrapper.find('a[href="#/pdf-merge"]').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Converti DOCX in PDF')
+    expect(wrapper.find('a[href="#/docx-to-pdf"]').exists()).toBe(true)
+    expect(wrapper.find('nav a[href="#/docx-to-pdf"]').exists()).toBe(true)
 
     wrapper.unmount()
   })

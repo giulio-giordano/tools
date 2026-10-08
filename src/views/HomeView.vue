@@ -19,6 +19,11 @@ const preferences = usePreferencesStore()
         :description="preferences.t('pdfMergeDescription')"
         to="/pdf-merge"
       />
+      <ToolCard
+        :title="preferences.t('docxPdfToolTitle')"
+        :description="preferences.t('docxPdfToolDescription')"
+        to="/docx-to-pdf"
+      />
     </div>
   </section>
 </template>
