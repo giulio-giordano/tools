@@ -24,6 +24,11 @@ const preferences = usePreferencesStore()
         :description="preferences.t('docxPdfToolDescription')"
         to="/docx-to-pdf"
       />
+      <ToolCard
+        :title="preferences.t('pdfDocxToolTitle')"
+        :description="preferences.t('pdfDocxToolDescription')"
+        to="/pdf-to-docx"
+      />
     </div>
   </section>
 </template>

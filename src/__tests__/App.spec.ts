@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
 import { createPinia } from 'pinia'
 import App from '../App.vue'
 import router from '../router'
@@ -26,6 +27,14 @@ describe('app shell', () => {
     expect(wrapper.text()).toContain('Converti DOCX in PDF')
     expect(wrapper.find('a[href="#/docx-to-pdf"]').exists()).toBe(true)
     expect(wrapper.find('nav a[href="#/docx-to-pdf"]').exists()).toBe(true)
+    expect(wrapper.text()).toContain('Converti PDF in DOCX')
+    expect(wrapper.find('a[href="#/pdf-to-docx"]').exists()).toBe(true)
+    expect(wrapper.find('nav a[href="#/pdf-to-docx"]').exists()).toBe(true)
+
+    await router.push('/pdf-to-docx')
+    await router.isReady()
+    await nextTick()
+    expect(wrapper.find('h1').text()).toBe('Converti PDF in DOCX')
 
     wrapper.unmount()
   })

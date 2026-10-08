@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'docx-to-pdf',
       component: () => import('../tools/docx-to-pdf/DocxToPdfView.vue'),
     },
+    {
+      path: '/pdf-to-docx',
+      name: 'pdf-to-docx',
+      component: () => import('../tools/pdf-to-docx/PdfToDocxView.vue'),
+    },
   ],
 })
 

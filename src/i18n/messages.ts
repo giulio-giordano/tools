@@ -10,10 +10,15 @@ export const messages = {
     pdfMergeTitle: 'Unisci PDF',
     pdfMergeDescription: "Combina più documenti in un unico PDF, nell'ordine che preferisci.",
     docxPdfToolTitle: 'Converti DOCX in PDF',
-    docxPdfToolDescription: 'Converti più documenti Word nel browser e scarica i PDF in un unico archivio.',
+    docxPdfToolDescription:
+      'Converti più documenti Word nel browser e scarica i PDF in un unico archivio.',
+    pdfDocxToolTitle: 'Converti PDF in DOCX',
+    pdfDocxToolDescription:
+      'Converti PDF nel browser e scarica i documenti Word in un archivio ZIP. Le scansioni restano immagini: niente OCR.',
     pdfMergeHeading: 'Unisci file PDF',
     pdfMergeIntroduction: 'Combina i tuoi documenti in un unico file.',
-    privacyMessage: 'La privacy è garantita: i file vengono elaborati interamente nel browser e non vengono caricati su server.',
+    privacyMessage:
+      'La privacy è garantita: i file vengono elaborati interamente nel browser e non vengono caricati su server.',
     dropzoneTitle: 'Trascina qui i tuoi file PDF',
     dropzoneHint: 'oppure selezionali dal dispositivo',
     chooseFiles: 'Seleziona PDF',
@@ -30,13 +35,17 @@ export const messages = {
     merging: 'Unione in corso…',
     downloadMerged: 'Scarica PDF unito',
     invalidPdf: 'Seleziona file PDF validi.',
-    unreadablePdf: 'Non è possibile leggere “{name}”. Il file potrebbe essere danneggiato o protetto da password.',
+    unreadablePdf:
+      'Non è possibile leggere “{name}”. Il file potrebbe essere danneggiato o protetto da password.',
     mergeFailed: 'Non è stato possibile unire i PDF. Riprova con file più piccoli o non protetti.',
     mergeSuccess: 'PDF unito e pronto per il download.',
     docxPdfHeading: 'Converti DOCX in PDF',
-    docxPdfIntroduction: 'Converti documenti Word nel browser e scarica i PDF in un unico archivio ZIP.',
-    docxPrivacyMessage: 'I documenti restano sul tuo dispositivo: la conversione avviene nel browser e i file non vengono caricati.',
-    docxFidelityNotice: 'La formattazione può differire da Microsoft Word. I font di sostituzione sono inclusi nell’app e non vengono scaricati da servizi esterni.',
+    docxPdfIntroduction:
+      'Converti documenti Word nel browser e scarica i PDF in un unico archivio ZIP.',
+    docxPrivacyMessage:
+      'I documenti restano sul tuo dispositivo: la conversione avviene nel browser e i file non vengono caricati.',
+    docxFidelityNotice:
+      'La formattazione può differire da Microsoft Word. I font di sostituzione sono inclusi nell’app e non vengono scaricati da servizi esterni.',
     docxDropzoneTitle: 'Trascina qui i tuoi file DOCX',
     docxDropzoneHint: 'oppure selezionali dal dispositivo',
     chooseDocxFiles: 'Seleziona DOCX',
@@ -51,11 +60,41 @@ export const messages = {
     fileStatusFailed: 'Non convertito',
     invalidPdfName: 'Inserisci un nome valido per il PDF.',
     fileConversionFailed: 'Impossibile convertire questo file. Verifica che sia un DOCX valido.',
-    conversionSuccess: 'Conversione completata: {successCount} PDF nell’archivio ZIP; file non convertiti: {failureCount}.',
+    conversionSuccess:
+      'Conversione completata: {successCount} PDF nell’archivio ZIP; file non convertiti: {failureCount}.',
     conversionNoSuccess: 'Nessun file è stato convertito. Correggi gli errori e riprova.',
-    archiveCreationFailed: 'Non è stato possibile creare l’archivio ZIP. Riprova con file più piccoli.',
+    archiveCreationFailed:
+      'Non è stato possibile creare l’archivio ZIP. Riprova con file più piccoli.',
     downloadPdfArchive: 'Scarica archivio ZIP',
     pdfArchiveFilename: 'docx-pdf-convertiti.zip',
+    pdfToDocxHeading: 'Converti PDF in DOCX',
+    pdfToDocxIntroduction:
+      'Converti i tuoi file PDF in documenti Word modificabili e scaricali in un unico archivio ZIP.',
+    pdfToDocxPrivacyMessage:
+      'I PDF restano sul tuo dispositivo: la conversione avviene interamente nel browser e i file non vengono inviati all’esterno.',
+    pdfToDocxFidelityNotice:
+      'Il layout può variare rispetto al PDF. Le scansioni vengono mantenute come immagini; non viene eseguito OCR e il testo nelle immagini non sarà selezionabile.',
+    pdfToDocxDropzoneTitle: 'Trascina qui i tuoi file PDF',
+    pdfToDocxDropzoneHint: 'oppure selezionali dal dispositivo',
+    pdfToDocxChooseFiles: 'Seleziona PDF',
+    pdfToDocxOutputNameFor: 'Nome del DOCX per {name}',
+    pdfToDocxInvalidFiles: 'Seleziona solo file PDF. File ignorati: {names}',
+    pdfToDocxConvertFiles: 'Converti file PDF',
+    pdfToDocxConvertingFiles: 'Conversione in corso…',
+    pdfToDocxFileStatusReady: 'In attesa',
+    pdfToDocxFileStatusConverting: 'Conversione in corso',
+    pdfToDocxFileStatusConverted: 'Convertito',
+    pdfToDocxFileStatusFailed: 'Non convertito',
+    pdfToDocxInvalidName: 'Inserisci un nome valido per il DOCX.',
+    pdfToDocxPasswordProtected: '“{name}” è protetto da password. Rimuovi la protezione e riprova.',
+    pdfToDocxFileConversionFailed:
+      'Impossibile convertire “{name}”. Verifica che sia un PDF valido.',
+    pdfToDocxLossCount: 'Il report segnala {count} possibili differenze di conversione.',
+    pdfToDocxViewLossReport: 'Mostra il report di conversione',
+    pdfToDocxConversionSuccess:
+      'Conversione completata: {successCount} DOCX nell’archivio ZIP; file non convertiti: {failureCount}.',
+    downloadDocxArchive: 'Scarica archivio ZIP',
+    docxArchiveFilename: 'pdf-to-docx-convertiti.zip',
   },
   en: {
     documentTitle: 'tools — useful tools',
@@ -68,10 +107,15 @@ export const messages = {
     pdfMergeTitle: 'Merge PDFs',
     pdfMergeDescription: 'Combine multiple documents into one PDF, in the order you choose.',
     docxPdfToolTitle: 'Convert DOCX to PDF',
-    docxPdfToolDescription: 'Convert multiple Word documents in your browser and download the PDFs in one archive.',
+    docxPdfToolDescription:
+      'Convert multiple Word documents in your browser and download the PDFs in one archive.',
+    pdfDocxToolTitle: 'Convert PDF to DOCX',
+    pdfDocxToolDescription:
+      'Convert PDFs in your browser and download the Word documents in one ZIP archive. Scans remain images; no OCR.',
     pdfMergeHeading: 'Merge PDF files',
     pdfMergeIntroduction: 'Combine your documents into one file.',
-    privacyMessage: 'Your privacy is protected: files are processed entirely in your browser and are not uploaded to a server.',
+    privacyMessage:
+      'Your privacy is protected: files are processed entirely in your browser and are not uploaded to a server.',
     dropzoneTitle: 'Drop your PDF files here',
     dropzoneHint: 'or choose them from your device',
     chooseFiles: 'Choose PDFs',
@@ -92,9 +136,12 @@ export const messages = {
     mergeFailed: 'The PDFs could not be merged. Try smaller or unprotected files.',
     mergeSuccess: 'Merged PDF is ready to download.',
     docxPdfHeading: 'Convert DOCX to PDF',
-    docxPdfIntroduction: 'Convert Word documents in your browser and download the PDFs in one ZIP archive.',
-    docxPrivacyMessage: 'Your documents stay on your device: conversion runs in your browser and files are not uploaded.',
-    docxFidelityNotice: 'Formatting may differ from Microsoft Word. Substitute fonts are bundled with the app and are not downloaded from external services.',
+    docxPdfIntroduction:
+      'Convert Word documents in your browser and download the PDFs in one ZIP archive.',
+    docxPrivacyMessage:
+      'Your documents stay on your device: conversion runs in your browser and files are not uploaded.',
+    docxFidelityNotice:
+      'Formatting may differ from Microsoft Word. Substitute fonts are bundled with the app and are not downloaded from external services.',
     docxDropzoneTitle: 'Drop your DOCX files here',
     docxDropzoneHint: 'or choose them from your device',
     chooseDocxFiles: 'Choose DOCX files',
@@ -109,11 +156,40 @@ export const messages = {
     fileStatusFailed: 'Not converted',
     invalidPdfName: 'Enter a valid PDF name.',
     fileConversionFailed: 'This file could not be converted. Check that it is a valid DOCX.',
-    conversionSuccess: 'Conversion complete: {successCount} PDFs in the ZIP archive; files not converted: {failureCount}.',
+    conversionSuccess:
+      'Conversion complete: {successCount} PDFs in the ZIP archive; files not converted: {failureCount}.',
     conversionNoSuccess: 'No files were converted. Fix the errors and try again.',
     archiveCreationFailed: 'The ZIP archive could not be created. Try smaller files.',
     downloadPdfArchive: 'Download ZIP archive',
     pdfArchiveFilename: 'docx-to-pdf.zip',
+    pdfToDocxHeading: 'Convert PDF to DOCX',
+    pdfToDocxIntroduction:
+      'Convert your PDF files into editable Word documents and download them in one ZIP archive.',
+    pdfToDocxPrivacyMessage:
+      'Your PDFs stay on your device: conversion runs entirely in your browser and files are not sent elsewhere.',
+    pdfToDocxFidelityNotice:
+      'The layout may differ from the PDF. Scans are kept as images; OCR is not performed, and text in images will not be selectable.',
+    pdfToDocxDropzoneTitle: 'Drop your PDF files here',
+    pdfToDocxDropzoneHint: 'or choose them from your device',
+    pdfToDocxChooseFiles: 'Choose PDFs',
+    pdfToDocxOutputNameFor: 'DOCX name for {name}',
+    pdfToDocxInvalidFiles: 'Select PDF files only. Ignored files: {names}',
+    pdfToDocxConvertFiles: 'Convert PDF files',
+    pdfToDocxConvertingFiles: 'Converting…',
+    pdfToDocxFileStatusReady: 'Ready',
+    pdfToDocxFileStatusConverting: 'Converting',
+    pdfToDocxFileStatusConverted: 'Converted',
+    pdfToDocxFileStatusFailed: 'Not converted',
+    pdfToDocxInvalidName: 'Enter a valid DOCX name.',
+    pdfToDocxPasswordProtected:
+      '“{name}” is password-protected. Remove the protection and try again.',
+    pdfToDocxFileConversionFailed: '“{name}” could not be converted. Check that it is a valid PDF.',
+    pdfToDocxLossCount: 'The report notes {count} possible conversion differences.',
+    pdfToDocxViewLossReport: 'Show conversion report',
+    pdfToDocxConversionSuccess:
+      'Conversion complete: {successCount} DOCX files in the ZIP archive; files not converted: {failureCount}.',
+    downloadDocxArchive: 'Download ZIP archive',
+    docxArchiveFilename: 'pdf-to-docx.zip',
   },
 } as const
 
